@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
 import Task from './Task'
+import { Button } from 'react-bootstrap';
 
 const ListTask = ({ tasks }) => {
   const [filter,setFilter] = useState("All");
   return (
-    <div>
+    <div >
       <div>
-        <button onClick={()=> setFilter("All")}>
+        <div style={{display: "inline-flex",gap: "10px",margin: "15px"}}>
+        <Button onClick={()=> setFilter("All")}>
           All
-        </button>
-        <button onClick={()=> setFilter("To Do")}>
+        </Button>
+        <Button onClick={()=> setFilter("To Do")}>
           To Do
-        </button>
-        <button onClick={()=> setFilter("Done")}>
+        </Button>
+        <Button onClick={()=> setFilter("Done")}>
           Done
-        </button>
-        <div>
+        </Button>
+        </div>
+        <div className='card'>
           {(filter === "Done" ? tasks.filter(task => task.isDone === true) :
           filter === "To Do" ?
           tasks.filter(task => task.isDone ===false) :

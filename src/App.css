@@ -1,12 +1,1 @@
-.App {
-  text-align: center;
-  /* background-color: Linear-gradient(190deg,#867bcd 0%,#6a5aab 100%); */
-  background-color: #867bcd;
-}
 
-.todo-box{
-cursor: pointer;
-}
-.completed{
-  text-decoration: line-through;
-}

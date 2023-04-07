@@ -1,9 +1,9 @@
-import { ADD_TASK, COMPLET_TASK, EDIT_TASK } from "../actiontypes/ActionTypes"
+import { ADD_TASK, COMPLET_TASK, DELETE_ALL, DELETE_TASK, EDIT_TASK } from "../actiontypes/ActionTypes"
 
 const initialState={
     tasks:[
         {id:Math.floor(Math.random()*1000),discription: "workshop",isDone:false},
-        {id:Math.floor(Math.random()*1000),discription: "Dinner",isDone:true},
+        {id:Math.floor(Math.random()*1000),discription: "Dinner",isDone:false},
     ]
 }
 const tasksReducers = (state =initialState,{type,payload}) =>{
@@ -37,7 +37,12 @@ switch(type){
                 })
                 return {
                     ...state,tasks :editTask
-                }
+                };
+                case DELETE_TASK:
+                      const deleteTask = state.tasks.filter(task=>task.id!==payload)
+                      return {...state,tasks:deleteTask}
+                case DELETE_ALL :
+                    return {...state,tasks:[]};
         default:
             return state;
          
